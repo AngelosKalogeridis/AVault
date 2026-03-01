@@ -66,9 +66,9 @@ The app uses **[yt-dlp](https://github.com/yt-dlp/yt-dlp)** to fetch the audio s
 ---
 
 ## 🖥️ Screenshots
-
-<img width="752" height="889" alt="image" src="https://github.com/user-attachments/assets/4d6e7bed-1dba-4c56-9437-0ac01b44b480" />
-
+<p align="center">
+    <img width="600" alt="image" src="https://github.com/user-attachments/assets/4d6e7bed-1dba-4c56-9437-0ac01b44b480" />
+</p> 
 
 ---
 
