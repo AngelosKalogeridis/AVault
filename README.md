@@ -72,6 +72,20 @@ The app uses **[yt-dlp](https://github.com/yt-dlp/yt-dlp)** to fetch the audio s
 
 ---
 
+## 🔧 Built With
+
+| Tool | Purpose |
+|---|---|
+| [Java 21](https://www.oracle.com/java/) | Core language |
+| [JavaFX 21](https://openjfx.io/) | Desktop UI framework |
+| [yt-dlp](https://github.com/yt-dlp/yt-dlp) | Audio downloading |
+| [FFmpeg](https://ffmpeg.org/) | Audio encoding & metadata tagging |
+| [JAudioTagger](https://www.jthink.net/jaudiotagger/) | Embedding lyrics into MP3 |
+| [Maven](https://maven.apache.org/) | Build & dependency management |
+| [jpackage](https://docs.oracle.com/en/java/javase/21/docs/specs/man/jpackage.html) | Packaging into a standalone `.exe` |
+
+---
+
 ## ⚠️ Disclaimer
 
 This tool is intended for **personal use only**. Please respect copyright laws and each platform's Terms of Service. Only download content you have the right to download.
