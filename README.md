@@ -65,13 +65,6 @@ The app uses **[yt-dlp](https://github.com/yt-dlp/yt-dlp)** to fetch the audio s
 
 ---
 
-## 🖥️ Screenshots
-<p align="center">
-    <img width="600" alt="image" src="https://github.com/user-attachments/assets/4d6e7bed-1dba-4c56-9437-0ac01b44b480" />
-</p> 
-
----
-
 ## 🔧 Built With
 
 | Tool | Purpose |
@@ -83,6 +76,14 @@ The app uses **[yt-dlp](https://github.com/yt-dlp/yt-dlp)** to fetch the audio s
 | [JAudioTagger](https://www.jthink.net/jaudiotagger/) | Embedding lyrics into MP3 |
 | [Maven](https://maven.apache.org/) | Build & dependency management |
 | [jpackage](https://docs.oracle.com/en/java/javase/21/docs/specs/man/jpackage.html) | Packaging into a standalone `.exe` |
+
+---
+
+## 🖥️ Screenshots
+
+<p align="center">
+  <img width="600" alt="Audio Converter Screenshot" src="https://github.com/user-attachments/assets/4d6e7bed-1dba-4c56-9437-0ac01b44b480" />
+</p>
 
 ---
 
