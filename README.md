@@ -100,12 +100,12 @@ AVault uses **[yt-dlp](https://github.com/yt-dlp/yt-dlp)** to fetch streams and 
 
 <table align="center">
   <tr>
-    <td align="center"><img width="376" alt="Audio Mode" src="https://github.com/user-attachments/assets/3856799e-acf1-4982-954d-bca15738ab80" /></td>
-    <td align="center"><img width="376" alt="Video Mode" src="https://github.com/user-attachments/assets/5c13d618-8a37-4c2f-9602-0ba2bb606259" /></td>
-  </tr>
-  <tr>
     <td align="center">🎵 Audio Mode</td>
     <td align="center">🎬 Video Mode</td>
+  </tr>
+  <tr>
+    <td align="center"><img width="376" alt="Audio Mode" src="https://github.com/user-attachments/assets/3856799e-acf1-4982-954d-bca15738ab80" /></td>
+    <td align="center"><img width="376" alt="Video Mode" src="https://github.com/user-attachments/assets/5c13d618-8a37-4c2f-9602-0ba2bb606259" /></td>
   </tr>
 </table>
 
