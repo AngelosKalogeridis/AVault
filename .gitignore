@@ -1,0 +1,11 @@
+target/
+installer-output/
+staging/
+dependency-reduced-pom.xml
+*.class
+.idea/
+*.iml
+yt-dlp.exe
+ffmpeg.exe
+ffprobe.exe
+spotdl.exe
