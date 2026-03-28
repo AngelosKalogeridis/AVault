@@ -148,8 +148,8 @@ jpackage `
     <td align="center">🎬 Video Mode</td>
   </tr>
   <tr>
-    <td align="center"><img width="376" alt="Audio Mode" src="https://github.com/user-attachments/assets/3856799e-acf1-4982-954d-bca15738ab80" /></td>
-    <td align="center"><img width="376" alt="Video Mode" src="https://github.com/user-attachments/assets/5c13d618-8a37-4c2f-9602-0ba2bb606259" /></td>
+    <td align="center"><img width="376" alt="Audio Mode" src="https://github.com/user-attachments/assets/70bf2d6f-ce0d-4bb6-b7de-e2ca18961b2a" /></td>
+    <td align="center"><img width="376" alt="Video Mode" src="https://github.com/user-attachments/assets/61bac582-7c11-41c0-95bb-c8e64eb4119d" /></td>
   </tr>
 </table>
 
