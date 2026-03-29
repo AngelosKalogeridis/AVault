@@ -3,6 +3,7 @@
 A desktop app that downloads and converts audio **and** video from YouTube, SoundCloud, TikTok, Instagram, Vimeo, and [hundreds more platforms](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md) — with optional lyrics, subtitle support, and a fully responsive UI that adapts to any window size.
 
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey?style=flat-square&logo=windows)
+![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey?style=flat-square&logo=linux)
 ![Java](https://img.shields.io/badge/Java-21-orange?style=flat-square&logo=openjdk)
 ![JavaFX](https://img.shields.io/badge/JavaFX-21-blue?style=flat-square)
 ![Free](https://img.shields.io/badge/Free-Personal%20Use-green?style=flat-square)
