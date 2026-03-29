@@ -96,13 +96,30 @@ AVault uses **[yt-dlp](https://github.com/yt-dlp/yt-dlp)** to fetch streams and 
 **Requirements**
 - Java 21+
 - Maven
-- `yt-dlp.exe`, `ffmpeg.exe`, `ffprobe.exe` placed in `target/dist/`
+
+First, clone the repository and build the project. This step applies to all platforms:
 
 ```bash
 git clone https://github.com/AngelosKalogeridis/AVault.git
 cd AVault
 mvn clean package
 ```
+
+This will generate `avault-1.0-SNAPSHOT.jar` inside the `target/` directory.
+
+Create a folder named `dist` in the root of the project and move the compiled JAR into it:
+
+```bash
+mkdir dist
+# On Windows: copy target\avault-1.0-SNAPSHOT.jar dist\
+# On Linux: cp target/avault-1.0-SNAPSHOT.jar dist/
+```
+
+### 🪟 Windows
+
+### Additional Requirements
+- `yt-dlp.exe`, `ffmpeg.exe`, `ffprobe.exe` and the compiled `avault-1.0-SNAPSHOT.jar` placed in `dist/`
+- `app.ico` icon file in root directory
 
 **Packaging to `.exe`**
 ```powershell
@@ -112,7 +129,7 @@ jpackage `
   --app-version "1.0.0" `
   --vendor "AK006" `
   --icon "app.ico" `
-  --input "target\dist" `
+  --input "dist" `
   --main-jar "avault-1.0-SNAPSHOT.jar" `
   --main-class "Launcher" `
   --dest "installer-output" `
@@ -122,8 +139,36 @@ jpackage `
   --description "AVault — Audio & Video Downloader"
 ```
 
-> The bundled tools (`yt-dlp.exe`, `ffmpeg.exe`, `ffprobe.exe`) must be placed in `target/dist/` before running `jpackage`. They are resolved at runtime from the same folder as the JAR.
+> The bundled tools (`yt-dlp.exe`, `ffmpeg.exe`, `ffprobe.exe`) must be placed in `dist/` before running `jpackage`. They are resolved at runtime from the same folder as the JAR.
 
+### 🐧 Linux
+
+### Additional Requirements
+
+- Linux native binaries for `yt-dlp`, `ffmpeg`, and `ffprobe` and the compiled `avault-1.0-SNAPSHOT.jar` placed in `dist/`
+- `app.png` icon file in root directory (Linux does not support `.ico`)
+
+**Packaging to `.deb`**
+```bash
+jpackage \
+  --type deb \
+  --name "AVault" \
+  --app-version "1.0.0" \
+  --vendor "AK006" \
+  --icon "app.png" \
+  --input "dist" \
+  --main-jar "avault-1.0-SNAPSHOT.jar" \
+  --main-class "Launcher" \
+  --dest "installer-output" \
+  --linux-shortcut \
+  --linux-menu-group "AudioVideo" \
+  --linux-app-category "AudioVideo" \
+  --description "AVault — Audio & Video Downloader"
+```
+
+> The bundled Linux tools (`yt-dlp`, `ffmpeg`, `ffprobe`) must be placed in `dist/` before running `jpackage`. They are resolved at runtime from the same folder as the JAR.
+
+### NOTE: Change --type deb to --type rpm for Fedora/RHEL
 ---
 
 ## 🔧 Built With
