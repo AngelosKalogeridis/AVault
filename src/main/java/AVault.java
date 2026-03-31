@@ -955,9 +955,7 @@ public class AVault extends Application {
             }
 
             boolean success = currentProcess.waitFor() == 0;
-
-            // Clean up leftover subtitle sidecar files (.vtt, .srt, .ass, .ttml) that yt-dlp
-            // wrote to disk before embedding — they are already baked into the container.
+            
             if (success && hasSubs) {
                 updateMessage("Cleaning up subtitle sidecar files...");
                 File dir = new File(outputDir);
