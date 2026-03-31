@@ -149,7 +149,7 @@ public class AVault extends Application {
         videoModeRadio.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(videoModeRadio, Priority.ALWAYS);
 
-        updateModeButtonStyles(false); // initial: audio selected
+        updateModeButtonStyles(false);
 
         HBox typeBox = new HBox(0, audioModeRadio, videoModeRadio);
         typeBox.setAlignment(Pos.CENTER_LEFT);
@@ -191,9 +191,9 @@ public class AVault extends Application {
         configStack.setAlignment(Pos.TOP_LEFT);
         configStack.setMaxWidth(Double.MAX_VALUE);
 
-        // Listen for mode changes
+       
         mediaTypeGroup.selectedToggleProperty().addListener((obs, oldVal, newVal) -> {
-            if (newVal == null) { oldVal.setSelected(true); return; } // prevent deselection
+            if (newVal == null) { oldVal.setSelected(true); return; }
             boolean isVideo = newVal == videoModeRadio;
 
             updateModeButtonStyles(isVideo);
@@ -622,7 +622,7 @@ public class AVault extends Application {
             task.setOnSucceeded(e -> {
                 setUiLocked(false); progressBar.setProgress(0);
                 VideoAnalysisResult res = task.getValue();
-                
+               
                 // Set Resolutions
                 if (res.resolutions.isEmpty()) statusLabel.setText("No resolutions found.");
                 else {
