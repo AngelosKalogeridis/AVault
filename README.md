@@ -142,7 +142,8 @@ jpackage `
 
 > The bundled tools (`yt-dlp.exe`, `ffmpeg.exe`, `ffprobe.exe`) must be placed in `dist/` before running `jpackage`. They are resolved at runtime from the same folder as the JAR.
 
-### NOTE: This must be executed in PowerShell because it uses the backtick (`). For execution in cmd, replace ` with ^.
+### NOTE: This must be executed in PowerShell because it uses the backtick (`). 
+For execution in cmd, replace ` with ^.
 
 ### 🐧 Linux
 
