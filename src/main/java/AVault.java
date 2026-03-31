@@ -214,7 +214,7 @@ public class AVault extends Application {
                 progressBar.setStyle("-fx-accent: #0078d7;");
                 analyzeButton.setStyle(BTN_BLUE);
                 root.setStyle(GLOBAL_THEME_BLUE);
-                logArea.setText("[MODE] Switched to ▶ Video mode");
+                logArea.setText("[MODE] Switched to ▶ Video mode\n");
             } else {
                 updateAudioActionText();
                 mainActionBtn.setStyle(BTN_RED + "-fx-font-size: 13px; -fx-pref-height: 36px;");
@@ -230,7 +230,7 @@ public class AVault extends Application {
                 progressBar.setStyle("-fx-accent: #e74c3c;");
                 analyzeButton.setStyle(BTN_ORANGE);
                 root.setStyle(GLOBAL_THEME_RED);
-                logArea.setText("[MODE] Switched to 🎵 Audio mode");
+                logArea.setText("[MODE] Switched to 🎵 Audio mode\n");
             }
             resetAnalysisState();
         });
@@ -322,6 +322,9 @@ public class AVault extends Application {
         });
 
         primaryStage.show();
+        
+        // --- Init State ---
+        logArea.setText("[MODE] Started in 🎵 Audio mode\n");
         onLyricsModeChanged();
     }
 
@@ -381,8 +384,6 @@ public class AVault extends Application {
     }
 
     private void animateHeaderColor(Label label, String targetHex) {
-        // Simple swap — JavaFX inline CSS doesn't support property-level animation,
-        // so we do a quick fade-through-dark trick
         FadeTransition ft = new FadeTransition(Duration.millis(120), label);
         ft.setFromValue(1.0);
         ft.setToValue(0.3);
@@ -426,7 +427,7 @@ public class AVault extends Application {
         subtitleBox.setConverter(getSubtitleConverter());
         subtitleBox.setOnAction(e -> {
             SubtitleTrack t = subtitleBox.getValue();
-            if (t != null) logArea.setText("[INFO] Lyrics track selected: " + t);
+            if (t != null) logArea.appendText("[INFO] Lyrics track selected: " + t + "\n");
         });
 
         Label formatLabel = new Label("Format:");
@@ -444,13 +445,13 @@ public class AVault extends Application {
                 onLyricsModeChanged();
             }
             updateAudioActionText();
-            logArea.setText("[INFO] Audio format set to: " + fmt.toUpperCase());
+            logArea.appendText("[INFO] Audio format set to: " + fmt.toUpperCase() + "\n");
         });
 
         playlistCheckBox = new CheckBox("Download full playlist");
         playlistCheckBox.setStyle("-fx-text-fill: white;");
         playlistCheckBox.setOnAction(e ->
-            logArea.setText("[INFO] Playlist mode: " + (playlistCheckBox.isSelected() ? "ON" : "OFF"))
+            logArea.appendText("[INFO] Playlist mode: " + (playlistCheckBox.isSelected() ? "ON" : "OFF") + "\n")
         );
 
         HBox formatRow = new HBox(20, formatLabel, formatCombo, playlistCheckBox);
@@ -472,7 +473,7 @@ public class AVault extends Application {
         videoFormatBox.setValue("mp4");
         videoFormatBox.setOnAction(e -> {
             if (videoFormatBox.getValue() != null)
-                logArea.setText("[INFO] Video container set to: " + videoFormatBox.getValue().toUpperCase());
+                logArea.appendText("[INFO] Video container set to: " + videoFormatBox.getValue().toUpperCase() + "\n");
         });
 
         Label resLabel = new Label("🎬  Video Quality");
@@ -483,7 +484,7 @@ public class AVault extends Application {
         resolutionBox.setDisable(true);
         resolutionBox.setOnAction(e -> {
             if (resolutionBox.getValue() != null)
-                logArea.setText("[INFO] Resolution selected: " + resolutionBox.getValue());
+                logArea.appendText("[INFO] Resolution selected: " + resolutionBox.getValue() + "\n");
         });
 
         Label subLabel = new Label("Embed Subtitles:");
@@ -495,7 +496,7 @@ public class AVault extends Application {
         videoSubtitleBox.setConverter(getSubtitleConverter());
         videoSubtitleBox.setOnAction(e -> {
             SubtitleTrack t = videoSubtitleBox.getValue();
-            if (t != null) logArea.setText("[INFO] Subtitle track selected: " + t);
+            if (t != null) logArea.appendText("[INFO] Subtitle track selected: " + t + "\n");
         });
 
         HBox formatRow = new HBox(15, formatLabel, videoFormatBox);
@@ -522,13 +523,13 @@ public class AVault extends Application {
     private void onLyricsModeChanged() {
         if (noLyricsRadio.isSelected()) {
             subtitleBox.setDisable(true);
-            logArea.setText("[INFO] Lyrics mode: Audio only (no lyrics)");
+            logArea.appendText("[INFO] Lyrics mode: Audio only (no lyrics)\n");
         } else if (separateLyricsRadio.isSelected()) {
             if (!subtitleBox.getItems().isEmpty()) subtitleBox.setDisable(false);
-            logArea.setText("[INFO] Lyrics mode: Separate .lrc file");
+            logArea.appendText("[INFO] Lyrics mode: Separate .lrc file\n");
         } else if (embedLyricsRadio.isSelected()) {
             if (!subtitleBox.getItems().isEmpty()) subtitleBox.setDisable(false);
-            logArea.setText("[INFO] Lyrics mode: Embed lyrics into MP3");
+            logArea.appendText("[INFO] Lyrics mode: Embed lyrics into MP3\n");
         }
     }
 
@@ -538,7 +539,7 @@ public class AVault extends Application {
         File selectedDirectory = chooser.showDialog(stage);
         if (selectedDirectory != null) {
             outputField.setText(selectedDirectory.getAbsolutePath());
-            logArea.setText("[INFO] Output folder: " + selectedDirectory.getAbsolutePath());
+            logArea.appendText("[INFO] Output folder: " + selectedDirectory.getAbsolutePath() + "\n");
         }
     }
 
@@ -594,7 +595,7 @@ public class AVault extends Application {
         String url = urlField.getText().trim();
         if (url.isEmpty() || !isValidUrl(url)) { statusLabel.setText("Error: Please enter a valid URL."); return; }
 
-        setUiLocked(true); logArea.clear(); progressBar.setProgress(-1);
+        setUiLocked(true); progressBar.setProgress(-1);
 
         if (audioModeRadio.isSelected()) {
             statusLabel.setText("Analyzing video for subtitles/lyrics...");
@@ -650,7 +651,7 @@ public class AVault extends Application {
         String url = urlField.getText().trim(); String outDir = outputField.getText().trim();
         if (url.isEmpty() || !isValidUrl(url) || outDir.isEmpty()) { statusLabel.setText("Error: Valid URL and Output Directory required."); return; }
 
-        setUiLocked(true); logArea.clear(); unbindAll(); progressBar.setProgress(0);
+        setUiLocked(true); unbindAll(); progressBar.setProgress(0);
 
         if (audioModeRadio.isSelected()) {
             SubtitleTrack selectedTrack = subtitleBox.getValue();
@@ -695,7 +696,7 @@ public class AVault extends Application {
 
     // --- UPDATER ---
     private void updateYtDlp() {
-        setUiLocked(true); logArea.clear(); logArea.appendText("[INFO] Checking for yt-dlp updates...\n");
+        setUiLocked(true); logArea.appendText("[INFO] Checking for yt-dlp updates...\n");
         Task<Void> updateTask = new Task<>() {
             @Override protected Void call() throws Exception {
                 List<String> command = new WorkerTask<Void>(){ @Override protected Void call(){return null;} }.getBaseCommand();
