@@ -115,6 +115,7 @@ mkdir dist
 # On Windows: copy target\avault-1.0-SNAPSHOT.jar dist\
 # On Linux: cp target/avault-1.0-SNAPSHOT.jar dist/
 ```
+#### 💡 Developer Tip: If you just want to test the app locally without building the executables, you can run it directly from the terminal using: `mvn clean javafx:run`
 
 ### 🪟 Windows
 
