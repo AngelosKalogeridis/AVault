@@ -233,6 +233,7 @@ public class AVault extends Application {
                 logArea.setText("[MODE] Switched to 🎵 Audio mode\n");
             }
             resetAnalysisState();
+            Platform.runLater(() -> urlField.requestFocus());
         });
 
         // --- 6. Output Directory ---
@@ -547,11 +548,12 @@ public class AVault extends Application {
 
     // --- STATE MANAGEMENT ---
     private void resetApp() {
-        urlField.clear(); logArea.clear(); unbindAll(); progressBar.setProgress(0);
+        urlField.clear(); unbindAll(); progressBar.setProgress(0);
         statusLabel.setText("Ready"); resetAnalysisState();
         noLyricsRadio.setSelected(true); formatCombo.setValue("mp3"); playlistCheckBox.setSelected(false);
         videoFormatBox.setValue("mp4");
         setUiLocked(false);
+        logArea.clear();
         logArea.appendText("[INFO] App reset.\n");
         Platform.runLater(() -> urlField.requestFocus());
     }
