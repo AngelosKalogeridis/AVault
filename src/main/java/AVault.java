@@ -553,6 +553,7 @@ public class AVault extends Application {
         videoFormatBox.setValue("mp4");
         setUiLocked(false);
         logArea.appendText("[INFO] App reset.\n");
+        Platform.runLater(() -> urlField.requestFocus());
     }
 
     private void resetAnalysisState() {
@@ -923,7 +924,6 @@ public class AVault extends Application {
                 command.add(subTrack.isAuto ? "--write-auto-sub" : "--write-sub");
                 command.add("--sub-lang"); command.add(subTrack.code);
                 command.add("--embed-subs");
-                // mp4 requires SRT (mov_text); mkv can handle SRT/ASS natively
                 command.add("--convert-subs"); command.add("srt");
             }
 
